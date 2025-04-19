@@ -1,104 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PTStore MiniShop</title>
-  <script>
-    function showForm(item) {
-      document.getElementById("form-container").style.display = "block";
-      document.getElementById("item").value = item;
-      document.getElementById("main").style.display = "none";
-    }
-
-    function backToMenu() {
-      document.getElementById("form-container").style.display = "none";
-      document.getElementById("main").style.display = "block";
-    }
-
-    function sendForm() {
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-      const item = document.getElementById("item").value;
-      const data = { name, phone, item };
-      Telegram.WebApp.sendData(JSON.stringify(data));
-      alert("Заявка отправлена!");
-      backToMenu();
-    }
-
-    window.addEventListener("DOMContentLoaded", function () {
-      if (window.Telegram && Telegram.WebApp) {
-        Telegram.WebApp.ready();
-      }
-    });
-  </script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      padding: 20px;
-      margin: 0;
-    }
-    h1 { font-size: 24px; margin-bottom: 20px; }
-    button {
-      background: #fff;
-      color: #000;
-      border: none;
-      padding: 12px 18px;
-      margin: 5px 0;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .category {
-      margin-bottom: 20px;
-    }
-    .hidden {
-      display: none;
-    }
-    input {
-      padding: 10px;
-      margin: 8px 0;
-      width: 100%;
-      border-radius: 5px;
-      border: none;
-      font-size: 16px;
-    }
-  </style>
+  <title>PTStore Premium</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="main">
-    <h1>Категории:</h1>
-
+  <header>PTStore | Премиальная техника</header>
+  <div class="container">
     <div class="category">
       <h2>📱 Техника</h2>
-      <button onclick="showForm('iPhone 16 Pro Max 256')">iPhone 16 Pro Max 256</button><br/>
-      <button onclick="showForm('iPhone 16 Pro Max 512')">iPhone 16 Pro Max 512</button><br/>
-      <button onclick="showForm('iPhone 16 Pro Max 1TB')">iPhone 16 Pro Max 1TB</button>
+      <div class="item">iPhone 16 Pro Max — 256GB</div>
+      <div class="item">iPhone 16 Pro Max — 512GB</div>
+      <div class="item">iPhone 16 Pro Max — 1TB</div>
     </div>
-
     <div class="category">
-      <h2>🔐 Подписки</h2>
-      <button onclick="showForm('ChatGPT - 3000₽')">ChatGPT – 3000₽</button><br/>
-      <button onclick="showForm('PS Deluxe - 12000₽')">PS Deluxe – 12.000₽</button><br/>
-      <button onclick="showForm('VPN - 1000₽')">VPN – 1.000₽</button>
+      <h2>🧾 Подписки</h2>
+      <div class="item">ChatGPT Plus — 3000₽</div>
+      <div class="item">PS Plus Deluxe — 12000₽</div>
+      <div class="item">VPN Premium — 1000₽</div>
     </div>
-
     <div class="category">
-      <h2>📝 Под заказ</h2>
-      <button onclick="showForm('Под заказ – индивидуально')">Оставить заявку</button>
+      <h2>📦 Под заказ</h2>
+      <div class="item">Оставьте заявку — мы подберем идеальное решение</div>
+      <button onclick="window.Telegram.WebApp.sendData(JSON.stringify({name: 'Имя', phone: 'Телефон', item: 'Запрос под заказ'}))">
+        ✍ Оставить заявку
+      </button>
     </div>
-  </div>
-
-  <div id="form-container" class="hidden">
-    <h2>Оформить заявку</h2>
-    <input id="name" placeholder="Имя" /><br/>
-    <input id="phone" placeholder="Телефон" /><br/>
-    <input id="item" readonly /><br/>
-    <button onclick="sendForm()">Отправить</button><br/>
-    <button onclick="backToMenu()">Назад</button>
   </div>
 </body>
 </html>
