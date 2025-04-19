@@ -8,6 +8,29 @@
   <style>
     .details { display: none; margin-top: 1rem; font-size: 0.95rem; line-height: 1.4; }
     .item:hover { cursor: pointer; text-decoration: underline; }
+    .form-container {
+      margin-top: 1rem;
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    input, select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+    }
+    .submit-button {
+      background-color: #143d2d;
+      color: white;
+      padding: 0.7rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
   </style>
 </head>
 <body>
@@ -20,32 +43,47 @@
       <div class="item">iPhone 16 Pro Max — 1TB</div>
       <a class="link-button" href="https://t.me/ptstoreq" target="_blank">✍ Оставить заявку</a>
     </div>
+
     <div class="category">
       <h2>🧾 Подписки</h2>
       <div class="item" onclick="toggleDetails('gpt')">ChatGPT Plus — 3000₽ / 1 месяц</div>
       <div id="gpt" class="details">
-        💡 Доступ к ChatGPT 4.0 — самый мощный ИИ для задач, текстов, идей и помощи в работе.  
+        💡 Доступ к ChatGPT 4.0 — самый мощный ИИ для задач, текстов, идей и помощи в работе.<br />
         📲 При покупке подписки приложение — бесплатно.
       </div>
 
       <div class="item" onclick="toggleDetails('psplus')">PS Plus Deluxe — 12000₽ / 12+1 месяцев</div>
       <div id="psplus" class="details">
-        🎮 Доступ к библиотеке игр, мультиплееру и эксклюзивным предложениям на PlayStation.  
+        🎮 Доступ к библиотеке игр, мультиплееру и эксклюзивным предложениям на PlayStation.<br />
         🛍 Бонусный месяц в подарок.
       </div>
 
       <div class="item" onclick="toggleDetails('vpn')">VPN Premium — 1000₽ / 1 год</div>
       <div id="vpn" class="details">
-        🔐 Безопасный доступ к любым сайтам, защита трафика и анонимность.  
+        🔐 Безопасный доступ к любым сайтам, защита трафика и анонимность.<br />
         📱 Работает на всех устройствах, поддержка 24/7.
       </div>
 
       <a class="link-button" href="https://t.me/ptstoreq" target="_blank">✍ Оставить заявку</a>
     </div>
+
     <div class="category">
-      <h2>📦 Под заказ</h2>
+      <h2>📦 Под заказ / Уточнить у консультанта</h2>
       <div class="item">Оставьте заявку — мы подберем идеальное решение</div>
-      <a class="link-button" href="https://t.me/ptstoreq" target="_blank">✍ Оставить заявку</a>
+      <button class="link-button" onclick="toggleForm()">✍ Оставить заявку</button>
+
+      <div class="form-container" id="orderForm">
+        <input type="text" id="name" placeholder="Ваше имя">
+        <input type="text" id="phone" placeholder="Телефон">
+        <input type="text" id="product" placeholder="Что вас интересует?">
+        <select id="payment">
+          <option value="">Выберите способ оплаты</option>
+          <option>Наличные</option>
+          <option>Рассрочка</option>
+          <option>Кредит</option>
+        </select>
+        <button class="submit-button" onclick="sendOrder()">Отправить</button>
+      </div>
     </div>
   </div>
 
@@ -53,6 +91,26 @@
     function toggleDetails(id) {
       const block = document.getElementById(id);
       block.style.display = block.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleForm() {
+      const form = document.getElementById("orderForm");
+      form.style.display = form.style.display === "flex" ? "none" : "flex";
+    }
+
+    function sendOrder() {
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const product = document.getElementById("product").value;
+      const payment = document.getElementById("payment").value;
+
+      const message = `📦 Новая заявка с сайта:
+👤 Имя: ${name}
+📞 Телефон: ${phone}
+📦 Интересует: ${product}
+💳 Оплата: ${payment}`;
+      const telegramUrl = `https://t.me/ptstoreq?text=${encodeURIComponent(message)}`;
+      window.open(telegramUrl, "_blank");
     }
   </script>
 </body>
