@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PTStore Premium</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .details { display: none; margin-top: 1rem; font-size: 0.95rem; line-height: 1.4; }
+    .item:hover { cursor: pointer; text-decoration: underline; }
+  </style>
 </head>
 <body>
   <header>PTStore | Премиальная техника</header>
@@ -18,9 +22,24 @@
     </div>
     <div class="category">
       <h2>🧾 Подписки</h2>
-      <div class="item">ChatGPT Plus — 3000₽ / 1 месяц</div>
-      <div class="item">PS Plus Deluxe — 12000₽ / 12+1 месяцев</div>
-      <div class="item">VPN Premium — 1000₽ / 1 год</div>
+      <div class="item" onclick="toggleDetails('gpt')">ChatGPT Plus — 3000₽ / 1 месяц</div>
+      <div id="gpt" class="details">
+        💡 Доступ к ChatGPT 4.0 — самый мощный ИИ для задач, текстов, идей и помощи в работе.  
+        📲 При покупке подписки приложение — бесплатно.
+      </div>
+
+      <div class="item" onclick="toggleDetails('psplus')">PS Plus Deluxe — 12000₽ / 12+1 месяцев</div>
+      <div id="psplus" class="details">
+        🎮 Доступ к библиотеке игр, мультиплееру и эксклюзивным предложениям на PlayStation.  
+        🛍 Бонусный месяц в подарок.
+      </div>
+
+      <div class="item" onclick="toggleDetails('vpn')">VPN Premium — 1000₽ / 1 год</div>
+      <div id="vpn" class="details">
+        🔐 Безопасный доступ к любым сайтам, защита трафика и анонимность.  
+        📱 Работает на всех устройствах, поддержка 24/7.
+      </div>
+
       <a class="link-button" href="https://t.me/ptstoreq" target="_blank">✍ Оставить заявку</a>
     </div>
     <div class="category">
@@ -29,5 +48,12 @@
       <a class="link-button" href="https://t.me/ptstoreq" target="_blank">✍ Оставить заявку</a>
     </div>
   </div>
+
+  <script>
+    function toggleDetails(id) {
+      const block = document.getElementById(id);
+      block.style.display = block.style.display === "block" ? "none" : "block";
+    }
+  </script>
 </body>
 </html>
