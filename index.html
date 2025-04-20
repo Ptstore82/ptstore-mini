@@ -31,6 +31,12 @@
       cursor: pointer;
       margin-top: 0.5rem;
     }
+    .icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
   </style>
 </head>
 <body>
@@ -46,22 +52,29 @@
 
     <div class="category">
       <h2>🧾 Подписки</h2>
-      <div class="item" onclick="toggleDetails('gpt')">ChatGPT Plus — 3000₽ / 1 месяц</div>
+
+      <div class="item" onclick="toggleDetails('gpt')">
+        <img src="https://img.icons8.com/ios-filled/50/000000/robot.png" class="icon"/>ChatGPT Plus — 3000₽ / 1 месяц
+      </div>
       <div id="gpt" class="details">
-        💡 Доступ к ChatGPT 4.0 — самый мощный ИИ для задач, текстов, идей и помощи в работе.<br />
-        📲 При покупке подписки приложение — бесплатно.
+        🤖 <b>ChatGPT 4.0</b> — самый мощный ИИ для текстов, задач, идей, помощник 24/7.<br />
+        📲 При покупке подписки — <b>приложение бесплатно</b>.
       </div>
 
-      <div class="item" onclick="toggleDetails('psplus')">PS Plus Deluxe — 12000₽ / 12+1 месяцев</div>
+      <div class="item" onclick="toggleDetails('psplus')">
+        <img src="https://img.icons8.com/ios-filled/50/000000/controller.png" class="icon"/>PS Plus Deluxe — 12000₽ / 12+1 месяцев
+      </div>
       <div id="psplus" class="details">
-        🎮 Доступ к библиотеке игр, мультиплееру и эксклюзивным предложениям на PlayStation.<br />
+        🎮 <b>PS Plus Deluxe</b> — доступ к библиотеке игр, мультиплееру и скидкам.<br />
         🛍 Бонусный месяц в подарок.
       </div>
 
-      <div class="item" onclick="toggleDetails('vpn')">VPN Premium — 1000₽ / 1 год</div>
+      <div class="item" onclick="toggleDetails('vpn')">
+        <img src="https://img.icons8.com/fluency/48/000000/vpn.png" class="icon"/>VPN Premium — 1000₽ / 1 год
+      </div>
       <div id="vpn" class="details">
-        🔐 Безопасный доступ к любым сайтам, защита трафика и анонимность.<br />
-        📱 Работает на всех устройствах, поддержка 24/7.
+        🛡️ <b>VPN Premium</b> — доступ к любым сайтам, защита трафика и анонимность.<br />
+        📱 Работает на всех устройствах.
       </div>
 
       <a class="link-button" href="https://t.me/ptstoreq" target="_blank">✍ Оставить заявку</a>
