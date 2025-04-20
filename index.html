@@ -51,7 +51,7 @@
     </div>
 
     <div class="category">
-      <h2>🧾 Подписки</h2>
+      <h2>🧾 Подписки / Приложения</h2>
 
       <div class="item" onclick="toggleDetails('gpt')">
         <img src="https://img.icons8.com/ios-filled/50/000000/robot.png" class="icon"/>ChatGPT Plus — 3000₽ / 1 месяц
@@ -75,6 +75,27 @@
       <div id="vpn" class="details">
         🛡️ <b>VPN Premium</b> — доступ к любым сайтам, защита трафика и анонимность.<br />
         📱 Работает на всех устройствах.
+      </div>
+
+      <div class="item" onclick="toggleDetails('bank')">
+        🏦 Установка банковских приложений на iPhone
+      </div>
+      <div id="bank" class="details">
+        🛠 Установим нужный банк на ваш iPhone, даже если приложение недоступно в App Store.<br />
+        🔒 Безопасно, быстро и удобно.
+      </div>
+
+      <div class="item" onclick="toggleDetails('applepay')">
+        💳 Пополнение Apple ID
+      </div>
+      <div id="applepay" class="details">
+        💰 Укажите сумму, имя и телефон — и мы пополним ваш Apple ID.
+        <div class="form-container" style="display:flex;">
+          <input type="text" id="appleName" placeholder="Ваше имя">
+          <input type="text" id="applePhone" placeholder="Телефон">
+          <input type="text" id="appleAmount" placeholder="Сумма пополнения (₽)">
+          <button class="submit-button" onclick="sendAppleTopUp()">Отправить заявку</button>
+        </div>
       </div>
 
       <a class="link-button" href="https://t.me/ptstoreq" target="_blank">✍ Оставить заявку</a>
@@ -122,6 +143,19 @@
 📞 Телефон: ${phone}
 📦 Интересует: ${product}
 💳 Оплата: ${payment}`;
+      const telegramUrl = `https://t.me/ptstoreq?text=${encodeURIComponent(message)}`;
+      window.open(telegramUrl, "_blank");
+    }
+
+    function sendAppleTopUp() {
+      const name = document.getElementById("appleName").value;
+      const phone = document.getElementById("applePhone").value;
+      const amount = document.getElementById("appleAmount").value;
+
+      const message = `🍏 Пополнение Apple ID:
+👤 Имя: ${name}
+📞 Телефон: ${phone}
+💰 Сумма пополнения: ${amount}₽`;
       const telegramUrl = `https://t.me/ptstoreq?text=${encodeURIComponent(message)}`;
       window.open(telegramUrl, "_blank");
     }
