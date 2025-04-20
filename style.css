@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffffff;
+  background-color: #f0f0f0;
   color: #143d2d;
 }
 header {
@@ -53,4 +53,11 @@ button, .link-button {
 button:hover, .link-button:hover {
   background-color: #0e2a20;
   transform: scale(1.03);
+}
+
+header span.pt {
+  color: #222; /* темный для "pt" */
+}
+header span.store {
+  color: #1f8b4c; /* насыщенный зеленый для "Store" */
 }

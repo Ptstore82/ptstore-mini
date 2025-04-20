@@ -62,10 +62,35 @@ input:invalid, select:invalid {
 .submit-button:active {
   transform: scale(0.96);
 }
+
+.submit-button:hover {
+  background-color: #1a4d3d;
+  transform: scale(1.05);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.form-container {
+  animation: slideDown 0.4s ease-out;
+}
+
+.fade-in {
+  animation: slideDown 0.4s ease-out;
+}
+
+.item {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 </style>
 </head>
 <body>
-<header>PTStore | Премиальная техника</header>
+<header><span class="pt">PT</span><span class="store">Store</span> | Премиальная техника</header>
 <div class="container">
 <div class="category">
 <h2>🧾 Подписки / Приложения</h2>
@@ -102,7 +127,8 @@ input:invalid, select:invalid {
       </div>
 <div class="details" id="applepay">
         💰 Укажите сумму, имя и телефон — и мы пополним ваш Apple ID.
-        <div class="form-container" style="display:flex;">
+        <p>💰 До 1000₽ — комиссия 1000₽
+💰 Свыше 1000₽ — комиссия 500₽</p><div class="form-container" style="display:flex;">
 <input id="appleName" placeholder="Ваше имя" required="required" type="text"/>
 <input id="applePhone" placeholder="Телефон" required="required" type="text"/>
 <input id="appleAmount" placeholder="Сумма пополнения (₽)" required="required" type="text"/>
@@ -186,6 +212,30 @@ sendAppleTopUp = function() {
   oldSendAppleTopUp();
   showToast();
 };
+
+// Анимация при открытии формы
+function toggleForm() {
+  const form = document.getElementById("orderForm");
+  if (form.style.display === "flex") {
+    form.style.display = "none";
+  } else {
+    form.style.display = "flex";
+    form.classList.remove("fade-in");
+    void form.offsetWidth; // trigger reflow
+    form.classList.add("fade-in");
+  }
+}
+
+document.getElementById("appleAmount").addEventListener("input", function() {
+  const amount = parseFloat(this.value);
+  let fee = 0;
+  if (!isNaN(amount)) {
+    fee = amount <= 1000 ? 1000 : 500;
+    document.getElementById("calcResult").textContent = `💸 Комиссия: ${fee}₽`;
+  } else {
+    document.getElementById("calcResult").textContent = "💸 Комиссия: 0₽";
+  }
+});
 </script>
 <div class="toast" id="toast">Спасибо! Мы с вами свяжемся в ближайшее время.</div></body>
 </html>
