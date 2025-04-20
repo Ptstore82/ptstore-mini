@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PTStore Premium</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PTStore Premium</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
     .details { display: none; margin-top: 1rem; font-size: 0.95rem; line-height: 1.4; }
     .item:hover { cursor: pointer; text-decoration: underline; }
     .form-container {
@@ -37,91 +38,98 @@
       vertical-align: middle;
       margin-right: 8px;
     }
-  </style>
+  
+input:invalid, select:invalid {
+  border: 2px solid red;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #143d2d;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: none;
+}
+
+.submit-button {
+  transition: transform 0.2s ease;
+}
+.submit-button:active {
+  transform: scale(0.96);
+}
+</style>
 </head>
 <body>
-  <header>PTStore | Премиальная техника</header>
-  <div class="container">
-    <div class="category">
-      <h2>📱 Техника</h2>
-      <div class="item">iPhone 16 Pro Max — 256GB</div>
-      <div class="item">iPhone 16 Pro Max — 512GB</div>
-      <div class="item">iPhone 16 Pro Max — 1TB</div>
-      <a class="link-button" href="https://t.me/ptstoreq" target="_blank">✍ Оставить заявку</a>
-    </div>
-
-    <div class="category">
-      <h2>🧾 Подписки / Приложения</h2>
-
-      <div class="item" onclick="toggleDetails('gpt')">
-        <img src="https://img.icons8.com/ios-filled/50/000000/robot.png" class="icon"/>ChatGPT Plus — 3000₽ / 1 месяц
+<header>PTStore | Премиальная техника</header>
+<div class="container">
+<div class="category">
+<h2>🧾 Подписки / Приложения</h2>
+<div class="item" onclick="toggleDetails('gpt')">
+<img class="icon" src="https://img.icons8.com/ios-filled/50/000000/robot.png"/>ChatGPT Plus — 3000₽ / 1 месяц
       </div>
-      <div id="gpt" class="details">
-        🤖 <b>ChatGPT 4.0</b> — самый мощный ИИ для текстов, задач, идей, помощник 24/7.<br />
+<div class="details" id="gpt">
+        🤖 <b>ChatGPT 4.0</b> — самый мощный ИИ для текстов, задач, идей, помощник 24/7.<br/>
         📲 При покупке подписки — <b>приложение бесплатно</b>.
       </div>
-
-      <div class="item" onclick="toggleDetails('psplus')">
-        <img src="https://img.icons8.com/ios-filled/50/000000/controller.png" class="icon"/>PS Plus Deluxe — 12000₽ / 12+1 месяцев
+<div class="item" onclick="toggleDetails('psplus')">
+<img class="icon" src="https://img.icons8.com/ios-filled/50/000000/controller.png"/>PS Plus Deluxe — 12000₽ / 12+1 месяцев
       </div>
-      <div id="psplus" class="details">
-        🎮 <b>PS Plus Deluxe</b> — доступ к библиотеке игр, мультиплееру и скидкам.<br />
+<div class="details" id="psplus">
+        🎮 <b>PS Plus Deluxe</b> — доступ к библиотеке игр, мультиплееру и скидкам.<br/>
         🛍 Бонусный месяц в подарок.
       </div>
-
-      <div class="item" onclick="toggleDetails('vpn')">
-        <img src="https://img.icons8.com/fluency/48/000000/vpn.png" class="icon"/>VPN Premium — 1000₽ / 1 год
+<div class="item" onclick="toggleDetails('vpn')">
+<img class="icon" src="https://img.icons8.com/fluency/48/000000/vpn.png"/>VPN Premium — 1000₽ / 1 год
       </div>
-      <div id="vpn" class="details">
-        🛡️ <b>VPN Premium</b> — доступ к любым сайтам, защита трафика и анонимность.<br />
+<div class="details" id="vpn">
+        🛡️ <b>VPN Premium</b> — доступ к любым сайтам, защита трафика и анонимность.<br/>
         📱 Работает на всех устройствах.
       </div>
-
-      <div class="item" onclick="toggleDetails('bank')">
+<div class="item" onclick="toggleDetails('bank')">
         🏦 Установка банковских приложений на iPhone
       </div>
-      <div id="bank" class="details">
-        🛠 Установим нужный банк на ваш iPhone, даже если приложение недоступно в App Store.<br />
+<div class="details" id="bank">
+        🛠 Установим нужный банк на ваш iPhone, даже если приложение недоступно в App Store.<br/>
         🔒 Безопасно, быстро и удобно.
       </div>
-
-      <div class="item" onclick="toggleDetails('applepay')">
+<div class="item" onclick="toggleDetails('applepay')">
         💳 Пополнение Apple ID
       </div>
-      <div id="applepay" class="details">
+<div class="details" id="applepay">
         💰 Укажите сумму, имя и телефон — и мы пополним ваш Apple ID.
         <div class="form-container" style="display:flex;">
-          <input type="text" id="appleName" placeholder="Ваше имя">
-          <input type="text" id="applePhone" placeholder="Телефон">
-          <input type="text" id="appleAmount" placeholder="Сумма пополнения (₽)">
-          <button class="submit-button" onclick="sendAppleTopUp()">Отправить заявку</button>
-        </div>
-      </div>
-
-      <a class="link-button" href="https://t.me/ptstoreq" target="_blank">✍ Оставить заявку</a>
-    </div>
-
-    <div class="category">
-      <h2>📦 Под заказ / Уточнить у консультанта</h2>
-      <div class="item">Оставьте заявку — мы подберем идеальное решение</div>
-      <button class="link-button" onclick="toggleForm()">✍ Оставить заявку</button>
-
-      <div class="form-container" id="orderForm">
-        <input type="text" id="name" placeholder="Ваше имя">
-        <input type="text" id="phone" placeholder="Телефон">
-        <input type="text" id="product" placeholder="Что вас интересует?">
-        <select id="payment">
-          <option value="">Выберите способ оплаты</option>
-          <option>Наличные</option>
-          <option>Рассрочка</option>
-          <option>Кредит</option>
-        </select>
-        <button class="submit-button" onclick="sendOrder()">Отправить</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
+<input id="appleName" placeholder="Ваше имя" required="required" type="text"/>
+<input id="applePhone" placeholder="Телефон" required="required" type="text"/>
+<input id="appleAmount" placeholder="Сумма пополнения (₽)" required="required" type="text"/>
+<button class="submit-button" onclick="sendAppleTopUp()">Отправить заявку</button>
+</div>
+</div>
+<a class="link-button" href="https://t.me/ptstoreq" target="_blank">✍ Оставить заявку</a>
+</div>
+<div class="category">
+<h2>📦 Под заказ / Уточнить у консультанта</h2>
+<div class="item">Оставьте заявку — мы подберем идеальное решение</div>
+<button class="link-button" onclick="toggleForm()">✍ Оставить заявку</button>
+<div class="form-container" id="orderForm">
+<input id="name" placeholder="Ваше имя" required="required" type="text"/>
+<input id="phone" placeholder="Телефон" required="required" type="text"/>
+<input id="product" placeholder="Что вас интересует?" required="required" type="text"/>
+<select id="payment" required="required">
+<option value="">Выберите способ оплаты</option>
+<option>Наличные</option>
+<option>Рассрочка</option>
+<option>Кредит</option>
+</select>
+<button class="submit-button" onclick="sendOrder()">Отправить</button>
+</div>
+</div>
+</div>
+<script>
     function toggleDetails(id) {
       const block = document.getElementById(id);
       block.style.display = block.style.display === "block" ? "none" : "block";
@@ -159,6 +167,25 @@
       const telegramUrl = `https://t.me/ptstoreq?text=${encodeURIComponent(message)}`;
       window.open(telegramUrl, "_blank");
     }
-  </script>
-</body>
+  
+function showToast() {
+  const toast = document.getElementById("toast");
+  toast.style.display = "block";
+  setTimeout(() => { toast.style.display = "none"; }, 3000);
+}
+
+// Вызовем showToast после открытия Telegram
+const oldSendOrder = sendOrder;
+sendOrder = function() {
+  oldSendOrder();
+  showToast();
+};
+
+const oldSendAppleTopUp = sendAppleTopUp;
+sendAppleTopUp = function() {
+  oldSendAppleTopUp();
+  showToast();
+};
+</script>
+<div class="toast" id="toast">Спасибо! Мы с вами свяжемся в ближайшее время.</div></body>
 </html>
