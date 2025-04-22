@@ -237,5 +237,27 @@ document.getElementById("appleAmount").addEventListener("input", function() {
   }
 });
 </script>
-<div class="toast" id="toast">Спасибо! Мы с вами свяжемся в ближайшее время.</div></body>
+<div class="toast" id="toast">Спасибо! Мы с вами свяжемся в ближайшее время.</div>
+<!-- Floating Button -->
+<button class="floating-btn" onclick="openModal()">+ Оставить заявку</button>
+<!-- Modal -->
+<div class="modal" id="requestModal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">×</span>
+<h3>Оставить заявку</h3>
+<input placeholder="Имя" type="text"/>
+<input placeholder="Телефон" type="tel"/>
+<textarea placeholder="Что вас интересует?"></textarea>
+<button class="submit-btn" onclick="closeModal()">Отправить</button>
+</div>
+</div>
+<script>
+  function openModal() {
+    document.getElementById('requestModal').style.display = 'block';
+  }
+  function closeModal() {
+    document.getElementById('requestModal').style.display = 'none';
+  }
+</script>
+</body>
 </html>
