@@ -131,3 +131,28 @@ header span.store {
   font-size: 22px;
   cursor: pointer;
 }
+
+
+
+/* Выделение описания (всплывающий блок) */
+.description-block {
+  background-color: #ffffff;
+  border-left: 5px solid #1f8b4c;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(31, 139, 76, 0.15);
+  animation: fadeInSlide 0.4s ease-in-out;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
